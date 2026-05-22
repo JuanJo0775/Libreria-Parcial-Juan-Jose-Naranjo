@@ -59,8 +59,9 @@ Justificación
 ## Reporte de Cobertura (Coverage Report)
 
 ejecutar con
+```text
 coverage run -m unittest tests/unit/test_product.py; coverage report
-
+```
 ```text
 Name                         Stmts   Miss  Cover
 ------------------------------------------------
