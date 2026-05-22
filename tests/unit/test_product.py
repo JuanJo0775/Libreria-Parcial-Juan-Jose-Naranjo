@@ -11,6 +11,11 @@ class TestProductRule1(unittest.TestCase):
         product = Product("Libro", 50000)
         self.assertEqual(product.price, 50000)
 
+    def test_crear_producto_precio_valido2(self):
+        product = Product("Libro", 100000)
+        self.assertEqual(product.price, 100000)
+
+
     def test_crear_producto_precio_cero(self):
         with self.assertRaisesRegex(ValueError, "el precio debe ser mayor a cero"):
             Product("Libro", 0)
@@ -20,9 +25,14 @@ class TestProductRule1(unittest.TestCase):
             Product("Libro", -100)
 
 
+
 class TestProductRule2(unittest.TestCase):
     def setUp(self):
         self.product = Product("Libro", 10000)
+
+    def test_aplicar_descuento_maximo_40(self):
+        self.product.apply_discount(40)
+        self.assertEqual(self.product.discounted_price, 6000)
 
     def test_aplicar_descuento_valido_20(self):
         self.product.apply_discount(20)
@@ -32,9 +42,8 @@ class TestProductRule2(unittest.TestCase):
         self.product.apply_discount(0)
         self.assertEqual(self.product.discounted_price, 10000)
 
-    def test_aplicar_descuento_maximo_40(self):
-        self.product.apply_discount(40)
-        self.assertEqual(self.product.discounted_price, 6000)
+
+
 
     def test_descuento_mayor_a_40_error(self):
         with self.assertRaisesRegex(ValueError, "el descuento no puede superar el 40 por ciento"):
@@ -47,6 +56,12 @@ class TestProductRule2(unittest.TestCase):
     def test_descuento_negativo_error(self):
         with self.assertRaisesRegex(ValueError, "el descuento no puede ser negativo"):
             self.product.apply_discount(-10)
+
+    def test_descuento_negativo_error2(self):
+        with self.assertRaisesRegex(ValueError, "el descuento no puede ser negativo"):
+            self.product.apply_discount(-1)
+
+
 
 class TestProductRule3(unittest.TestCase):
     def setUp(self):
