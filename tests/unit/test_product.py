@@ -19,6 +19,7 @@ class TestProductRule1(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "el precio debe ser mayor a cero"):
             Product("Libro", -100)
 
+
 class TestProductRule2(unittest.TestCase):
     def setUp(self):
         self.product = Product("Libro", 10000)

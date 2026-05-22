@@ -1,9 +1,11 @@
+
 from behave import given, when, then
 import sys
 import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../src')))
 from product import Product
+
 
 @given('un producto llamado "{name}" con un precio base de {price:d}')
 def step_given_producto(context, name, price):
