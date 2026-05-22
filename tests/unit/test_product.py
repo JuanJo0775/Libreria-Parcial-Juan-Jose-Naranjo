@@ -38,6 +38,10 @@ class TestProductRule2(unittest.TestCase):
         self.product.apply_discount(20)
         self.assertEqual(self.product.discounted_price, 8000)
 
+    def test_aplicar_descuento_valido_30(self):
+        self.product.apply_discount(30)
+        self.assertEqual(self.product.discounted_price, 7000)
+
     def test_aplicar_descuento_0_sin_cambio(self):
         self.product.apply_discount(0)
         self.assertEqual(self.product.discounted_price, 10000)
