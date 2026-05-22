@@ -37,3 +37,14 @@ Feature: Calculo de descuento y precio final para Libreria del Centro
     When aplico un descuento del 0 por ciento
     And solicito el precio final
     Then el precio final debe ser aproximadamente 11900
+
+  @descuento @error
+  Scenario: Rechazar un descuento negativo
+    When intento aplicar un descuento del -5 por ciento
+    Then el sistema debe rechazarlo con el mensaje "el descuento no puede ser negativo"
+
+  @precio-final @valido
+  Scenario: Ver el precio final con el descuento máximo permitido
+    When aplico un descuento del 40 por ciento
+    And solicito el precio final
+    Then el precio final debe ser aproximadamente 7140
