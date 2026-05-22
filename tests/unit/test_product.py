@@ -47,5 +47,25 @@ class TestProductRule2(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "el descuento no puede ser negativo"):
             self.product.apply_discount(-10)
 
+class TestProductRule3(unittest.TestCase):
+    def setUp(self):
+        self.product = Product("Libro", 10000)
+
+    def test_calcular_precio_final_con_descuento_e_iva(self):
+        self.product.apply_discount(20)
+        self.assertAlmostEqual(self.product.get_final_price(), 9520, places=2)
+
+    def test_calcular_precio_final_sin_descuento_e_iva(self):
+        self.product.apply_discount(0)
+        self.assertAlmostEqual(self.product.get_final_price(), 11900, places=2)
+
+    def test_calcular_precio_final_maximo_descuento_e_iva(self):
+        self.product.apply_discount(40)
+        self.assertAlmostEqual(self.product.get_final_price(), 7140, places=2)
+
+    def test_precio_final_nunca_negativo(self):
+        self.product.apply_discount(40)
+        self.assertGreaterEqual(self.product.get_final_price(), 0)
+
 if __name__ == '__main__':
     unittest.main()

@@ -56,4 +56,18 @@ Justificación
 - **TC-09 (Regla 3 - Borde):** Calcular precio final sin descuento. Precondición: Producto precio 5000, descuento 0%. Pasos: Llamar get_final_price(). Resultado: 5950.
 - **TC-10 (Regla 2 - Borde):** Aplicar descuento justo encima del límite (41%). Precondición: Producto precio 10000. Datos: descuento=41. Pasos: Llamar apply_discount(41). Resultado: Error "el descuento no puede superar el 40%".
 
+## Reporte de Cobertura (Coverage Report)
+
+ejecutar con
+coverage run -m unittest tests/unit/test_product.py; coverage report
+
+```text
+Name                         Stmts   Miss  Cover
+------------------------------------------------
+src\product.py                  23      0   100%
+tests\unit\test_product.py      53      1    98%
+------------------------------------------------
+TOTAL                           76      1    99%
+```
+
 — Juan José
