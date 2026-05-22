@@ -19,7 +19,10 @@ class Product:
         self._validate_discount(discount)
         self.discounted_price = self.price * (1 - discount / 100)
 
+    def _get_base_for_calculation(self):
+        return self.discounted_price if self.discounted_price is not None else self.price
+
     def get_final_price(self):
-        base = self.discounted_price if self.discounted_price is not None else self.price
-        final_price = base * 1.19
-        return final_price if final_price >= 0 else 0
+        IVA_RATE = 1.19
+        final_price = self._get_base_for_calculation() * IVA_RATE
+        return max(0, final_price)
