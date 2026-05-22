@@ -3,6 +3,7 @@ class Product:
         self._validate_price(price)
         self.name = name
         self.price = price
+        self.discounted_price = None
 
     def _validate_price(self, price):
         if price <= 0:
@@ -17,3 +18,8 @@ class Product:
     def apply_discount(self, discount):
         self._validate_discount(discount)
         self.discounted_price = self.price * (1 - discount / 100)
+
+    def get_final_price(self):
+        base = self.discounted_price if self.discounted_price is not None else self.price
+        final_price = base * 1.19
+        return final_price if final_price >= 0 else 0
