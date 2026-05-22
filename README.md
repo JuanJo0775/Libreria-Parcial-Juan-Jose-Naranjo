@@ -63,12 +63,13 @@ ejecutar con
 coverage run -m unittest tests/unit/test_product.py; coverage report
 ```
 ```text
+OK
 Name                         Stmts   Miss  Cover
 ------------------------------------------------
 src\product.py                  23      0   100%
-tests\unit\test_product.py      53      1    98%
+tests\unit\test_product.py      59      1    98%
 ------------------------------------------------
-TOTAL                           76      1    99%
+TOTAL                           82      1    99%
 ```
 
 — Juan José
